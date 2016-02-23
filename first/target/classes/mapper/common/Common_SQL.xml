@@ -18,11 +18,23 @@
 	<sql id="pagingPre">
 		<![CDATA[
    			SELECT 
-			    AAA.*
+			        AAA.TOTAL_COUNT,
+			    	AAA.RNUM,
+			        AAA.IDX,
+			        AAA.TITLE,
+			        AAA.HIT_CNT,
+			        AAA.CREA_DTM
 			FROM(
 			    SELECT 
-			        (SELECT count(*)    FROM TB_BOARD WHERE 1=1 and DEL_GB = 'N') AS TOTAL_COUNT,
-			        AA.*
+			        (SELECT
+			   COUNT(*)
+			FROM
+			    TB_BOARD WHERE 1=1 AND DEL_GB = 'N') AS TOTAL_COUNT,
+			        AA.RNUM,
+			        AA.IDX,
+			        AA.TITLE,
+			        AA.HIT_CNT,
+			        AA.CREA_DTM
 			    FROM(  
  		]]>
  	</sql>

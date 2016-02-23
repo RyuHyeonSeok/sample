@@ -29,18 +29,16 @@ public class FileUtils {
     	
     	List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();
         Map<String, Object> listMap = null; 
-        
-        String boardIdx = (String)map.get("IDX");
-        
+        Long boardIdx = (Long)map.get("IDX");
         File file = new File(filePath);
         if(file.exists() == false){
         	file.mkdirs();
         }
-        
         while(iterator.hasNext()){
         	multipartFile = multipartHttpServletRequest.getFile(iterator.next());
         	if(multipartFile.isEmpty() == false){
         		originalFileName = multipartFile.getOriginalFilename();
+        		System.out.println("############### originalFileName="+originalFileName);
         		originalFileExtension = originalFileName.substring(originalFileName.lastIndexOf("."));
         		storedFileName = CommonUtils.getRandomString() + originalFileExtension;
         		
@@ -74,11 +72,11 @@ public class FileUtils {
         String requestName = null;
         String idx = null;
         
-        
         while(iterator.hasNext()){
         	multipartFile = multipartHttpServletRequest.getFile(iterator.next());
         	if(multipartFile.isEmpty() == false){
         		originalFileName = multipartFile.getOriginalFilename();
+        		System.out.println("############## originalFileName="+originalFileName);
         		originalFileExtension = originalFileName.substring(originalFileName.lastIndexOf("."));
         		storedFileName = CommonUtils.getRandomString() + originalFileExtension;
         		

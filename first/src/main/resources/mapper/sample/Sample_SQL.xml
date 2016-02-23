@@ -11,12 +11,12 @@
 			    A.IDX,
 			    A.TITLE,
 			    A.HIT_CNT,
-			    TO_CHAR(A.CREA_DTM, 'YYYY.MM.DD') AS CREA_DTM
+			    DATE_FORMAT(A.CREA_DTM, '%Y-%m-%d') AS CREA_DTM
 			FROM
 			    (    SELECT *    FROM TB_BOARD  ORDER BY IDX DESC  ) a,  
 			    ( SELECT @RNUM := 0 ) b
-			WHERE 1=1
-			AND	A.DEL_GB = 'N'
+			WHERE
+				A.DEL_GB = 'N'
 		]]>
 		<include refid="common.pagingPost"/> 
 	</select>
@@ -28,7 +28,6 @@
 		<![CDATA[
 			INSERT INTO TB_BOARD
 			(
-				IDX,
 			    TITLE, 
 			    CONTENTS, 
 			    HIT_CNT, 
@@ -37,13 +36,12 @@
 			    CREA_ID
 			)
 			VALUES
-			(
-				#{IDX}, 
+			( 
 				#{TITLE},
 				#{CONTENTS},
 			    0, 
 			    'N', 
-			    SYSDATE, 
+			    NOW(), 
 			    'Admin'
 			)
 		]]>
@@ -53,7 +51,7 @@
 		<![CDATA[
 			UPDATE TB_BOARD 
 			SET
-				HIT_CNT = NVL(HIT_CNT, 0) + 1
+				HIT_CNT = ifnull(HIT_CNT, 0) + 1
 			WHERE
 				IDX = #{IDX}	
 		]]>
@@ -101,7 +99,6 @@
 		<![CDATA[
 			INSERT INTO TB_FILE
 			(
-				IDX,
 				BOARD_IDX,
 				ORIGINAL_FILE_NAME,
 				STORED_FILE_NAME,
@@ -110,7 +107,6 @@
 			)
 			VALUES
 			(
-				SEQ_TB_FILE_IDX.NEXTVAL,
 				#{BOARD_IDX},
 				#{ORIGINAL_FILE_NAME},
 				#{STORED_FILE_NAME},

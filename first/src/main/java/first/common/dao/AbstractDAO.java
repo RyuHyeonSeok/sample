@@ -110,7 +110,7 @@ public class AbstractDAO {
 	
 	@SuppressWarnings("unchecked")
 	public Object selectPagingList(String queryId, Object params){
-		printQueryId(queryId);
+		printQueryId("############### "+queryId);
 		Map<String,Object> map = (Map<String,Object>)params;
 		
 		String strPageIndex = (String)map.get("PAGE_INDEX");
@@ -126,7 +126,8 @@ public class AbstractDAO {
 		}
 		map.put("START", (nPageIndex * nPageRow) + 1);
 		map.put("END", (nPageIndex * nPageRow) + nPageRow);
-		
+		System.out.println(map.get("START"));
+		System.out.println(map.get("END"));
 		return sqlSession.selectList(queryId, map);
 	}
 }

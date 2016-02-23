@@ -34,6 +34,7 @@ public class SampleServiceImpl implements SampleService{
 		
 		List<Map<String,Object>> list = fileUtils.parseInsertFileInfo(map, request);
 		for(int i=0, size=list.size(); i<size; i++){
+			System.out.println("insertFile");
 			sampleDAO.insertFile(list.get(i));
 		}
 	}

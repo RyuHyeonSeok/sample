@@ -13,6 +13,7 @@
     <bean id="dataSourceSpied" class="org.springframework.jndi.JndiObjectFactoryBean">
         <property name="jndiName" value="java:/comp/env/jdbc/mariaDB" />
     </bean>
+    
     <bean id="dataSource" class="net.sf.log4jdbc.Log4jdbcProxyDataSource">
 		<constructor-arg ref="dataSourceSpied" />
 		<property name="logFormatter">
