@@ -325,7 +325,26 @@
 			<artifactId>junit</artifactId>
 			<version>4.7</version>
 			<scope>test</scope>
-		</dependency>	  
+		</dependency>
+				
+		<!-- cglib -->
+	 	<dependency>
+	 		<groupId>cglib</groupId>
+	 		<artifactId>cglib</artifactId>
+	 		<version>2.2.2</version>
+	 	</dependency>
+	 	<dependency>
+		    <groupId>org.lazyluke</groupId>
+		    <artifactId>log4jdbc-remix</artifactId>
+		    <version>0.2.7</version>
+		</dependency>
+		<!-- Jackson JSON Mapper -->
+		<dependency>
+	        <groupId>org.codehaus.jackson</groupId>
+	        <artifactId>jackson-mapper-asl</artifactId>
+	        <version>1.9.13</version>
+		</dependency>
+			  
 	</dependencies>
 	
 	
